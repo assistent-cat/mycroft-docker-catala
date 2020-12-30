@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  mycroft:
+    container_name: mycroft
+    build:
+      context: .
+    ports:
+      - "8181:8181"
+    environment:
+      PULSE_SERVER: docker.for.mac.localhost
+    volumes:
+      - ./skills:/opt/mycroft/skills
+      - ./supervisord.conf:/opt/mycroft/supervisord.conf
+      - ./mycroft.conf:/root/.mycroft/mycroft.conf
+      - ./logs:/var/log/mycroft
+      - ~/.config/pulse/cookie:/root/.config/pulse/cookie
+    command: supervisord -c /opt/mycroft/supervisord.conf
+
+volumes:
+  skills:

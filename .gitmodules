@@ -1,0 +1,3 @@
+[submodule "mycroft-core"]
+	path = mycroft-core
+	url = https://github.com/assistent-cat/mycroft-core
