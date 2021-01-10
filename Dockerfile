@@ -40,9 +40,11 @@ RUN chmod +x /opt/mycroft/init.sh
 COPY ./mycroft.conf /root/.mycroft/mycroft.conf
 
 COPY ./docker-requirements.txt /opt/mycroft/docker-requirements.txt
-RUN pip install -U pip && pip install -r /opt/mycroft/docker-requirements.txt
+RUN pip install --no-cache-dir -U pip && pip install --no-cache-dir -r /opt/mycroft/docker-requirements.txt
 
 
 WORKDIR /opt/mycroft
 ENV PYTHONPATH $PYTHONPATH:/mycroft/ai
 ENV PATH="/opt/mycroft/bin:$PATH"
+
+EXPOSE 8181
